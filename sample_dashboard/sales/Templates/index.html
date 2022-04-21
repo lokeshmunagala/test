@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>NYC Sales Data Analytics</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">NYC Sales Data Analytics</a>
+      <ul class="navbar-nav px-3">
+	<li class="nav-item text-nowrap">
+	</li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+	<!-- Left Pane -->
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+	  <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+
+
+              <li class="nav-item">
+		<a class="nav-link" href="#">
+		  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+		  Reports
+		</a>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+
+            </h6>
+
+<h1 class="h2">Sales Analysis</h1>
+
+
+	  <!-- Highcharts display -->
+	  <div class="border" id="container" style="min-width: 1100px; height: 600px; margin: 0 auto"></div>
+
+
+	</main>
+      </div>
+
+
+        <div class="border" id="container1" style="min-width: 1100px; height: 600px; margin: 0 auto"></div>
+
+	</main>
+      </div>
+
+    <!-- Chartjs libraries -->
+        <!-- chart starts  -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <script>
+      _categories = {{categories|safe}};
+      _values = {{values|safe}};
+
+      Highcharts.chart('container', {
+	  chart: {
+              type: 'column'
+	  },
+	  title: {
+              text: 'Sales of Bronx 2021'
+	  },
+	  subtitle: {
+              text: ''
+	  },
+	  xAxis: {
+              categories:_categories,
+              crosshair: true
+	  },
+	  yAxis: {
+              min: 0,
+              title: {
+		  text: 'Sales in Millions'
+              }
+	  },
+	  tooltip: {
+              headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		  '<td style="padding:0"><b>{point.y}</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
+	  },
+	  plotOptions: {
+              column: {
+		  pointPadding: 0.2,
+		  borderWidth: 0
+        }
+	  },
+	  series: [{
+              name: 'NEIGHBORHOOD',
+              data: _values
+
+	  }]
+      });
+      </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<!-- chart ends  -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <script>
+      _cat = {{cat|safe}};
+      _val = {{val|safe}};
+
+      Highcharts.chart('container1', {
+	  chart: {
+              type: 'column'
+	  },
+	  title: {
+              text: 'Sales of Bronx 2020'
+	  },
+	  subtitle: {
+              text: ''
+	  },
+	  xAxis: {
+              categories:_cat,
+              crosshair: true
+	  },
+	  yAxis: {
+              min: 0,
+              title: {
+		  text: 'Sales in Millions'
+              }
+	  },
+	  tooltip: {
+              headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+              pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		  '<td style="padding:0"><b>{point.y}</b></td></tr>',
+              footerFormat: '</table>',
+              shared: true,
+              useHTML: true
+	  },
+	  plotOptions: {
+              column: {
+		  pointPadding: 0.2,
+		  borderWidth: 0
+        }
+	  },
+	  series: [{
+              name: 'NEIGHBORHOOD',
+              data: _val
+	  }]
+      });
+      </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  </body>
+</html>
